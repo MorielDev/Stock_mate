@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Stocks</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container">
+        <aside class="sidebar">
+            <h2 class="text-blue-700">Inventory</h2>
+            <ul>
+                <li><a href="home" class="text-blue-500">Home</a></li>
+                <li><a href="profile" class="text-blue-500">Profile</a></li>
+                <li><a href="/categories" class="text-blue-500">All Categories</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h1 class="text-center">My Stocks</h1>
+            <div class="table-container bg-white shadow rounded-md">
+                <table class="inventory-table border border-gray-300">
+                    <thead>
+                        <tr>
+                            <th class="text-blue-700">Items</th>
+                            <th class="text-blue-700">Category</th>
+                            <th class="text-blue-700">Stock</th>
+                            <th class="text-blue-700">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in user.stocks %}
+                        <tr>
+                            <td>{{ product.item_name }}</td>
+                            <td>{{ product.category }}</td>
+                            <td>{{ product.stock }}</td>
+                            <td>{{ product.price }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" class="text-center text-gray-800">No stocks found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

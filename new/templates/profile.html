@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container">
+        <aside class="sidebar">
+            <h2 class="text-blue-700">Inventory</h2>
+            <ul>
+                <li><a href="home" class="text-blue-500">Home</a></li>
+                <li><a href="mystocks" class="text-blue-500">My Stocks</a></li>
+                <li><a href="/categories" class="text-blue-500">All Categories</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h1 class="text-center">User Profile</h1>
+            <div class="form-container bg-white shadow rounded-md">
+                <p><strong>Username:</strong> {{ user.username }}</p>
+                <p><strong>Email:</strong> {{ user.email }}</p>
+                <!-- Add other user-specific details here -->
+            </div>
+        </main>
+    </div>
+</body>
+</html>
